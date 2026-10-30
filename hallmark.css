@@ -1,0 +1,76 @@
+/* Hallmark · macrostructure: Bento Grid (мягкие плитки) · theme: custom (тёплый крем, терракота, хвоя) · anchor hue: терракота */
+:root {
+  --c-canvas: #f6efe4; --c-surface: #fffaf1; --c-ink: #2b2118; --c-ink-soft: #6f5f50;
+  --c-accent: #c4572b; --c-accent-ink: #fff6ec; --c-accent-deep: #a8441e;
+  --f-display: "Nunito", "Segoe UI", system-ui, sans-serif; --f-text: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --hair: rgba(43, 33, 24, .12); --r: 28px; --tint: #f3dfcb; --shadow: 0 22px 50px -26px rgba(120, 60, 20, .45); --h1k: 1;
+}
+body { font-family: var(--f-text); }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 800; letter-spacing: -.02em; line-height: 1.08; }
+.s-btn { font-family: var(--f-text); font-weight: 800; }
+.s-bar { background: color-mix(in srgb, var(--c-canvas) 90%, transparent); }
+.s-bar__brand { font-weight: 900; font-size: 1.1rem; }
+.s-bar__brand i { background: var(--c-accent); }
+
+/* первый экран: крупные плиты - текст, запись и фото в разных цветах */
+.s-hero { gap: 18px; padding-top: 28px; grid-template-columns: minmax(0, 1fr) minmax(0, 430px); }
+.s-hero__bg { display: none; }
+.s-hero__text { background: var(--c-accent); color: var(--c-accent-ink); border-radius: var(--r); padding: clamp(26px, 4vw, 52px); }
+.s-eyebrow { color: #ffd9bf; }
+.s-hero h1 { font-size: clamp(2rem, 4.4vw, 3.6rem); }
+.s-lead { color: #ffe9d6; }
+.s-ticks li { font-weight: 700; }
+.s-ticks li::before { background: #fff6ec; }
+.s-ticks li::after { border-color: var(--c-accent); }
+.s-rating { color: #ffe9d6; }
+.s-rating b { color: #fff; }
+.s-hero__photo { margin-top: 24px; }
+.s-hero__photo img { border-radius: 22px; border: 0; aspect-ratio: 16 / 10; }
+.s-hero__widget { top: 80px; }
+.s-widget { border-radius: var(--r); background: var(--c-surface); border: 0; box-shadow: var(--shadow); }
+.s-chip { border-radius: 16px; border-width: 2px; }
+.s-chip:has(input:checked) { background: var(--tint); border-color: var(--c-accent); }
+.s-bubble { border-radius: 20px 20px 6px 20px; }
+
+/* секции: плитки-bento */
+.s-section__head h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+.s-section__head::before { content: ""; width: 42px; height: 8px; border-radius: 8px; background: var(--c-accent); }
+.s-board__row { border: 0; background: var(--c-surface); border-radius: 18px; padding: 16px 20px; margin-bottom: 8px; }
+.s-board__dots { display: none; }
+.s-board__name { flex: 1; }
+.s-board__price { color: var(--c-accent-deep); font-family: var(--f-display); font-weight: 900; }
+.s-incl > div { border-radius: var(--r); border: 0; }
+.s-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.s-steps__item { border: 0; border-radius: var(--r); background: var(--c-surface); padding: 26px; }
+.s-steps__item:nth-child(2) { background: #f0d9bf; }
+.s-steps__item:nth-child(3) { background: #e3e9d4; }
+.s-steps__item:nth-child(4) { background: var(--c-ink); color: #fff6ec; }
+.s-steps__item:nth-child(4) p { color: #d8c8b6; }
+.s-steps__n { width: 46px; height: 46px; font-weight: 900; font-size: 1rem; }
+.s-photos { grid-template-columns: 2fr 1fr 1fr; }
+.s-photos img { border-radius: var(--r); }
+.s-promises { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.s-promises li { grid-column: span 2; border: 0; border-radius: var(--r); border-top: 0; padding: 28px; }
+.s-promises li:nth-child(1) { grid-column: span 3; background: var(--tint); }
+.s-promises li:nth-child(2) { grid-column: span 3; background: #e3e9d4; }
+.s-promises h3 { font-size: 1.2rem; }
+.s-reviews li { border: 0; border-radius: var(--r); }
+.s-reviews li:nth-child(2) { background: var(--tint); }
+.s-faq details { border: 0; border-radius: 22px; }
+.s-contacts { border-radius: 36px; background: var(--c-ink); color: #fff6ec; }
+.s-contacts dt { color: #cdb9a3; }
+.s-contacts .s-btn--ghost { color: #fff6ec; border-color: rgba(255, 246, 236, .3); }
+
+@media (max-width: 960px) {
+  .s-hero { grid-template-columns: minmax(0, 1fr); }
+  .s-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .s-promises { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .s-promises li, .s-promises li:nth-child(1), .s-promises li:nth-child(2) { grid-column: span 1; }
+}
+@media (max-width: 640px) {
+  .s-steps { grid-template-columns: 1fr; }
+  .s-promises { grid-template-columns: 1fr; }
+  .s-photos { grid-template-columns: 1fr 1fr; }
+  .s-photos figure:first-child { grid-column: 1 / -1; }
+  .s-hero__text { padding: 24px; }
+}
